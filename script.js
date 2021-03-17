@@ -13,25 +13,21 @@ const tabInfo = document.getElementById('tabInfo')
 const nightCount = document.getElementById('nightCount')
 const priceText = document.getElementById('priceText')
 const priceNumber = document.getElementById('priceNumber')
-const offer1 = document.getElementById('offer1')
-const offer2 = document.getElementById('offer2')
-const offer3 = document.getElementById('offer3')
-const offer4 = document.getElementById('offer4')
-const priceToPay1 = document.getElementById('priceToPay1')
-const priceToPay2 = document.getElementById('priceToPay2')
-const priceToPay3 = document.getElementById('priceToPay3')
-const priceToPay4 = document.getElementById('priceToPay4')
 const offerContainer = document.getElementById('offerContainer')
 const buyBtn = document.getElementById('buyBtn')
 
 
+const getPhoto = num => `url(./pics/alps${num}.jpg)`
+
+const showPhoto = num => activePhoto.style.backgroundImage = getPhoto(num)
+
 arrowRight.addEventListener('click', photoRight)
 arrowLeft.addEventListener('click', photoLeft)
-photo1.addEventListener('click', showPhoto1)
-photo2.addEventListener('click', showPhoto2)
-photo3.addEventListener('click', showPhoto3)
-photo4.addEventListener('click', showPhoto4)
-photo5.addEventListener('click', showPhoto5)
+photo1.addEventListener('click', () => showPhoto(1))
+photo2.addEventListener('click', () => showPhoto(2))
+photo3.addEventListener('click', () => showPhoto(3))
+photo4.addEventListener('click', () => showPhoto(4))
+photo5.addEventListener('click', () => showPhoto(5))
 tab1.addEventListener('click', showTab1Info)
 tab2.addEventListener('click', showTab2Info)
 tab3.addEventListener('click', showTab3Info)
@@ -40,14 +36,7 @@ buyBtn.addEventListener('click', fetchData)
 
 let num = 0
 
-let photoUrl = [
-    "url(./pics/alps1.jpg)",
-    "url(./pics/alps2.jpg)",
-    "url(./pics/alps3.jpg)",
-    "url(./pics/alps4.jpg)",
-    "url(./pics/alps5.jpg)",
-    "url(./pics/alps6.jpg)"
-]
+
 
 let offers = [
     { id: 0, text: "1 nakvynė su pusryčiais ir slidinėjimo bilietas 1 dienai", price: 69, nights: "1 nakvynė" },
@@ -99,6 +88,7 @@ function updateCard(event) {
 }
 
 
+
 function photoRight() {
     num = num + 1
     if (num > 5) {
@@ -115,26 +105,6 @@ function photoLeft() {
     }
 
     activePhoto.style.backgroundImage = photoUrl[num]
-}
-
-function showPhoto1() {
-    activePhoto.style.backgroundImage = photoUrl[1]
-}
-
-function showPhoto2() {
-    activePhoto.style.backgroundImage = photoUrl[2]
-}
-
-function showPhoto3() {
-    activePhoto.style.backgroundImage = photoUrl[3]
-}
-
-function showPhoto4() {
-    activePhoto.style.backgroundImage = photoUrl[4]
-}
-
-function showPhoto5() {
-    activePhoto.style.backgroundImage = photoUrl[5]
 }
 
 function showTab1Info() {
