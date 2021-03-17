@@ -1,0 +1,226 @@
+
+.mainCont{
+    width: 80%;
+    margin: auto;
+}
+
+.offerInfo{
+    width: 60%;
+    height: 800px;
+    margin-right: 10px;
+    position: relative;
+}
+
+.discount{
+    box-sizing: border-box;
+    padding: 15px 10px;
+    text-align: center;
+    color: white;
+    background-color: tomato;
+    border-radius: 5px;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+}
+
+.activePhoto{
+    width: 100%;
+    height: 420px;
+    background-image: url(./pics/alps1.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+}
+
+#photo1{
+    background-image: url(./pics/alps2.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    width: 19%;
+    height: 80px;
+    margin: 0px 5px;
+}
+
+#photo2{
+    background-image: url(./pics/alps3.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    width: 19%;
+    height: 80px;
+    margin: 0px 5px;
+}
+
+#photo3{
+    background-image: url(./pics/alps4.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    width: 19%;
+    height: 80px;
+    margin: 0px 5px;
+}
+
+#photo4{
+    background-image: url(./pics/alps5.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    width: 19%;
+    height: 80px;
+    margin: 0px 5px;
+}
+
+#photo5{
+    background-image: url(./pics/alps6.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    width: 19%;
+    height: 80px;
+    margin: 0px 5px;
+}
+
+#photo1:hover, #photo2:hover, #photo3:hover, #photo4:hover, #photo5:hover{
+    border: 2px solid tomato;
+    cursor: pointer;
+}
+
+.arrowLeftRight{
+    padding: 10px 15px;
+}
+
+.arrowLeftRight:hover{
+    transform: scale(1.1);
+    color: white;
+    background-color: tomato;
+    cursor: pointer;
+}
+
+
+.offerTabsBar{
+    border: 1px solid grey;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.offerTab{
+    font-size: 14px;
+    width: 34%;
+    height: 100%;
+    text-align: center;
+    padding: 4px;
+}
+
+.offerTab:hover{
+    background-color: tomato;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#tabInfo{
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.actve{
+    background-color: tomato;
+    color: white;
+    border-radius: 5px;
+}
+
+.activeOffer{
+    border: 1px solid tomato;
+    border-radius: 5px;
+}
+
+
+.offerSelection{
+    width: 35%;
+    background-color: rgb(248, 248, 248);
+    /* height: 800px; */
+    margin-left: 10px;
+    font-family: 'Recursive', sans-serif;
+    border-radius: 5px;
+}
+
+#offerName{
+    margin-top: 30px;
+    
+}
+
+.fa-user, .fa-clock, .fa-calendar-alt{
+    color: tomato;
+    margin-top: 5px;
+}
+
+.offerSelection .container p{
+    margin: 5px 0 0 0;
+}
+
+.offerSelection .container span{
+    color: tomato;
+    font-size: 13px;
+}
+.offerSelection .container h1{
+    color: tomato;
+}
+
+.offerWithPrice{
+    font-size: 15px;
+    padding: 2px;
+    
+}
+
+.offerWithPrice div{
+    margin: 5px 5px;
+}
+.offerWithPrice:hover{
+    border: 1px solid tomato;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#buyBtn{
+    width: 100%;
+    height: 35px;
+    background-color: tomato;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#buyBtn:hover{
+    transform: scale(1.05);
+    color: black;
+    transition: 0.3s;
+}
+
+.fa-shopping-bag{
+    margin-left: 10px;
+}
+
+
+#priceToPay1, #priceToPay2, #priceToPay3, #priceToPay4{
+    font-weight: bold;
+}
+
+
+@media only screen and (max-width: 800px){
+    .mainCont{
+        flex-direction: column;
+    }
+    .offerInfo{
+        width: 100%;
+        order: 2;
+        margin-top: 10px;
+    }
+
+    .offerSelection{
+        width: 100%;
+        order: 1;
+        margin: auto;
+    }
+}
