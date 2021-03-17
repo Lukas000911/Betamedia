@@ -21,6 +21,8 @@ const priceToPay1 = document.getElementById('priceToPay1')
 const priceToPay2 = document.getElementById('priceToPay2')
 const priceToPay3 = document.getElementById('priceToPay3')
 const priceToPay4 = document.getElementById('priceToPay4')
+const offerContainer = document.getElementById('offerContainer')
+const buyBtn = document.getElementById('buyBtn')
 
 
 arrowRight.addEventListener('click', photoRight)
@@ -33,10 +35,8 @@ photo5.addEventListener('click', showPhoto5)
 tab1.addEventListener('click', showTab1Info)
 tab2.addEventListener('click', showTab2Info)
 tab3.addEventListener('click', showTab3Info)
-offer1.addEventListener('click', updateCard1)
-offer2.addEventListener('click', updateCard2)
-offer3.addEventListener('click', updateCard3)
-offer4.addEventListener('click', updateCard4)
+buyBtn.addEventListener('click', fetchData)
+
 
 let num = 0
 
@@ -48,6 +48,55 @@ let photoUrl = [
     "url(./pics/alps5.jpg)",
     "url(./pics/alps6.jpg)"
 ]
+
+let offers = [
+    { id: 0, text: "1 nakvynė su pusryčiais ir slidinėjimo bilietas 1 dienai", price: 69, nights: "1 nakvynė" },
+    { id: 1, text: "2 nakvynės su pusryčiais ir slidinėjimo bilietas 2 dienoms", price: 169, nights: "2 nakvynės" },
+    { id: 2, text: "3 nakvynės su pusryčiais ir slidinėjimo bilietas 3 dienoms", price: 269, nights: "3 nakvynės" },
+    { id: 3, text: "4 nakvynės su pusryčiais ir slidinėjimo bilietas 4 dienoms", price: 369, nights: "4 nakvynės" }
+]
+
+let myId
+
+showOffers()
+
+function showOffers() {
+
+    offers.map(item => {
+        let card = document.createElement('div')
+        card.classList.add('d-flex')
+        card.classList.add('offerWithPrice')
+        card.id = item.id
+        card.addEventListener('click', updateCard)
+
+        let cardText = document.createElement('div')
+        cardText.innerText = item.text
+
+        let offerPrice = document.createElement('div')
+        offerPrice.id = `priceToPay${item.id}`
+        offerPrice.innerText = `${item.price}€`
+
+        card.appendChild(cardText)
+        card.appendChild(offerPrice)
+
+        offerContainer.appendChild(card)
+
+    })
+
+}
+
+function updateCard(event) {
+    console.log(event.path[1].id);
+    nightCount.innerHTML = `<i class="far fa-clock"></i> ${offers[event.path[1].id].nights}`
+    priceText.innerText = `Kaina`
+    priceNumber.innerText = `${offers[event.path[1].id].price}€`
+    myId = event.path[1].id
+    let cards = document.querySelectorAll('.offerWithPrice')
+    cards.forEach(item => {
+        item.classList.remove('activeOffer')
+    })
+    event.path[1].classList.add('activeOffer')
+}
 
 
 function photoRight() {
@@ -109,42 +158,19 @@ function showTab3Info() {
     tabInfo.innerText = `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos consectetur id vero nostrum deleniti tenetur molestias eos! Explicabo, quidem eaque.`
 }
 
-function updateCard1() {
-    nightCount.innerHTML = `<i class="far fa-clock"></i> 1 nakvynė`
-    priceText.innerText = `Kaina`
-    priceNumber.innerText = priceToPay1.innerText
-    offer1.classList.add('activeOffer')
-    offer2.classList.remove('activeOffer')
-    offer3.classList.remove('activeOffer')
-    offer4.classList.remove('activeOffer')
-}
+function fetchData() {
 
-function updateCard2() {
-    nightCount.innerHTML = `<i class="far fa-clock"></i> 2 nakvynės`
-    priceText.innerText = `Kaina`
-    priceNumber.innerText = priceToPay2.innerText
-    offer2.classList.add('activeOffer')
-    offer1.classList.remove('activeOffer')
-    offer3.classList.remove('activeOffer')
-    offer4.classList.remove('activeOffer')
-}
+    let myOptions = {
+        id: myId
+    }
+    fetch('http://betamedia.lt/fakeAPI/krepselis', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(myOptions)
+    }).then(response => response.json())
+        .then(data => window.location.href = 'krepselis.html')
+    window.location.href = 'krepselis.html'
 
-function updateCard3() {
-    nightCount.innerHTML = `<i class="far fa-clock"></i> 3 nakvynės`
-    priceText.innerText = `Kaina`
-    priceNumber.innerText = priceToPay3.innerText
-    offer3.classList.add('activeOffer')
-    offer1.classList.remove('activeOffer')
-    offer2.classList.remove('activeOffer')
-    offer4.classList.remove('activeOffer')
-}
-
-function updateCard4() {
-    nightCount.innerHTML = `<i class="far fa-clock"></i> 4 nakvynės`
-    priceText.innerText = `Kaina`
-    priceNumber.innerText = priceToPay4.innerText
-    offer4.classList.add('activeOffer')
-    offer1.classList.remove('activeOffer')
-    offer3.classList.remove('activeOffer')
-    offer2.classList.remove('activeOffer')
 }
