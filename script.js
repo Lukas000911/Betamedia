@@ -34,7 +34,7 @@ tab3.addEventListener('click', showTab3Info)
 buyBtn.addEventListener('click', fetchData)
 
 
-let num = 0
+let num = 1
 
 
 
@@ -91,20 +91,20 @@ function updateCard(event) {
 
 function photoRight() {
     num = num + 1
-    if (num > 5) {
-        num = 0
+    if (num > 6) {
+        num = 1
     }
 
-    activePhoto.style.backgroundImage = photoUrl[num]
+    activePhoto.style.backgroundImage = showPhoto(num)
 }
 
 function photoLeft() {
     num = num - 1
-    if (num < 0) {
-        num = 5
+    if (num < 1) {
+        num = 6
     }
 
-    activePhoto.style.backgroundImage = photoUrl[num]
+    activePhoto.style.backgroundImage = showPhoto(num)
 }
 
 function showTab1Info() {
